@@ -1,4 +1,4 @@
 export class ValidateUserDto {
-  email: string;
+  username: string;
   password: string;
 }

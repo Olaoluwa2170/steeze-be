@@ -12,17 +12,19 @@ export class AuthService {
   ) {}
 
   async validateUser(validateUserDto: ValidateUserDto) {
-    const { email, password } = validateUserDto;
+    const { username: email, password } = validateUserDto;
     const user = await this.usersService.findOne(email);
-    const matchedPassword = bcrypt.match(password, user.password);
+    console.log(email, user);
+    const matchedPassword = bcrypt.compare(password, user.password);
     if (user && matchedPassword) {
-      return user;
+      const access_token = this.jwtService.sign(email);
+      return access_token;
     }
     return new UnauthorizedException('Unauthorized Access');
   }
 
   async login(user: any) {
-    const payload = { email: user.email };
+    const payload = { username: user.email, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
     };

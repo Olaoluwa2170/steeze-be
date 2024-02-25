@@ -1,17 +1,18 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Body, Post } from '@nestjs/common';
 // , Get, Post, Body, Patch, Param, Delete;
 import { UsersService } from './users.service';
+import { Prisma } from '@prisma/client';
 // import { CreateUserDto } from './dto/create-user.dto';
 // import { UpdateUserDto } from './dto/update-user.dto';
 
-@Controller('users')
+@Controller('user')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // @Post()
-  // create(@Body() createUserDto: CreateUserDto) {
-  //   // return this.usersService.create(createUserDto);
-  // }
+  @Post('/register')
+  create(@Body() createUserDto: Prisma.UserCreateInput) {
+    return this.usersService.create(createUserDto);
+  }
 
   // @Get()
   // findAll() {

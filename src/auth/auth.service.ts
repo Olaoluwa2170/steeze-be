@@ -1,14 +1,30 @@
-import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
-import { DatabaseService } from 'src/database/database.service';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { ValidateUserDto } from './dto/validate-user.dto';
+import { UsersService } from 'src/users/users.service';
+import * as bcrypt from 'bcryptjs';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly jwtService: JwtService,
+  ) {}
 
-  async signUp(createUserDto: Prisma.UserCreateInput) {
-    return await this.databaseService.user.create({
-      data: createUserDto,
-    });
+  async validateUser(validateUserDto: ValidateUserDto) {
+    const { email, password } = validateUserDto;
+    const user = await this.usersService.findOne(email);
+    const matchedPassword = bcrypt.match(password, user.password);
+    if (user && matchedPassword) {
+      return user;
+    }
+    return new UnauthorizedException('Unauthorized Access');
+  }
+
+  async login(user: any) {
+    const payload = { email: user.email };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 }

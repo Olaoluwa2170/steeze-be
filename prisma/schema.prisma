@@ -13,6 +13,6 @@ model User {
   email String @unique
   phone String
   name String
-  password String
+  password String?
   refreshToken String?
 }

@@ -1,11 +1,13 @@
-<mxfile host="app.diagrams.net" modified="2024-02-26T20:28:30.660Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" version="23.1.6" etag="2jbF_3FYvJW6jQNYVcA_" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-27T02:28:50.992Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="cnXf0cuGP4YYkPqvdsZW" version="23.1.6" type="github">
   <diagram id="prtHgNgQTEPvFCAcTncT" name="Page-1">
-    <mxGraphModel dx="1223" dy="871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="488" dy="1180" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="dNxyNK7c78bLwvsdeMH5-11" value="Orgchart" style="swimlane;html=1;startSize=20;horizontal=1;containerType=tree;glass=0;" parent="1" vertex="1">
-          <mxGeometry x="40" y="80" width="710" height="290" as="geometry" />
+        <mxCell id="dNxyNK7c78bLwvsdeMH5-11" value="Orgchart" style="swimlane;html=1;startSize=20;horizontal=1;containerType=tree;glass=0;" parent="1" vertex="1" collapsed="1">
+          <mxGeometry x="70" y="20" width="90" height="30" as="geometry">
+            <mxRectangle x="70" y="20" width="710" height="290" as="alternateBounds" />
+          </mxGeometry>
         </mxCell>
         <UserObject label="%name%&lt;br&gt;&lt;i style=&quot;color: gray&quot;&gt;%position%&lt;/i&gt;&lt;br&gt;&lt;a href=&quot;mailto:%email%&quot;&gt;Email&lt;/a&gt;" name="Tessa Miller" position="CFO" location="Office 1" email="me@example.com" placeholders="1" link="https://www.draw.io" id="dNxyNK7c78bLwvsdeMH5-12">
           <mxCell style="label;image=https://cdn3.iconfinder.com/data/icons/user-avatars-1/512/users-3-128.png;whiteSpace=wrap;html=1;rounded=0;glass=0;treeMoving=1;treeFolding=1;" parent="dNxyNK7c78bLwvsdeMH5-11" vertex="1">
@@ -36,6 +38,31 @@
             <mxGeometry x="490" y="180" width="180" height="80" as="geometry" />
           </mxCell>
         </UserObject>
+        <mxCell id="EdFa9Ja9O2mpxru3N8RJ-1" value="How do i change a picture to url" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EdFa9Ja9O2mpxru3N8RJ-2" value="Change font of ticket name" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EdFa9Ja9O2mpxru3N8RJ-3" value="Use router handler for on site qrgenerator and save ref code in db, scan to redeem" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <UserObject label="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;https://github.com/metafloor/bwip-js?tab=readme-ov-file&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;" link="https://github.com/metafloor/bwip-js?tab=readme-ov-file" id="EdFa9Ja9O2mpxru3N8RJ-4">
+          <mxCell style="whiteSpace=wrap;aspect=fixed;align=left;html=1;" vertex="1" parent="1">
+            <mxGeometry x="185" y="140" width="120" height="120" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="EdFa9Ja9O2mpxru3N8RJ-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="EdFa9Ja9O2mpxru3N8RJ-5" target="EdFa9Ja9O2mpxru3N8RJ-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="https://stackoverflow.com/questions/69813625/can-i-use-sharp-image-processing-library-in-react-js" link="https://stackoverflow.com/questions/69813625/can-i-use-sharp-image-processing-library-in-react-js" id="EdFa9Ja9O2mpxru3N8RJ-5">
+          <mxCell style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+            <mxGeometry x="210" y="370" width="100" height="100" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="EdFa9Ja9O2mpxru3N8RJ-6" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

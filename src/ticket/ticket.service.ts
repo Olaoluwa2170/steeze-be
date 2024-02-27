@@ -12,16 +12,15 @@ export class TicketService {
   ) {}
   getFilePath(fileName: string): string {
     const basePath = this.configService.get('base_url');
-    console.log(basePath, 'yesh');
     return path.join(basePath, fileName);
   }
   generateSVG(text: string) {
     const textToSVG = TextToSvg.loadSync();
     try {
       const svg = textToSVG.getSVG(text, {
-        fontSize: 110,
+        fontSize: 70,
         anchor: 'top',
-        atrributes: { fill: 'white', stroke: 'black' },
+        atrributes: { fill: 'red', stroke: 'black' },
       });
       return Buffer.from(svg);
     } catch (err) {
@@ -32,7 +31,7 @@ export class TicketService {
     const qrcodeBuffer = await bwipjs.toBuffer({
       bcid: 'qrcode',
       text,
-      scale: 5,
+      scale: 3,
       textcolor: 'ffffff',
     });
     return qrcodeBuffer;
@@ -51,23 +50,19 @@ export class TicketService {
   }
 
   async createTicket(customerName, ticketId, outputPath) {
-    // const ticketemplatePath = this.getFilePath(
-    //   '/imageFile/Black and White Minimalist Ticket Music Party (1).png',
-    // );
-
-    // console.log(ticketemplatePath);
-
-    const ticket = sharp(
-      './src/ticket/imageFile/Black and White Minimalist Ticket Music Party (1).png',
+    const ticketemplatePath = this.getFilePath(
+      '/ticket/imageFile/Black and White Minimalist Ticket Music Party (1).png',
     );
+    const ticket = sharp(ticketemplatePath);
 
     try {
-      const barcodeImageBuffer = await this.generateBarcode(ticketId);
+      const barcodeImageBuffer = this.generateBarcode(ticketId);
 
       // Generate customer name for ticket as buffer
-      const customerNameImageBuffer = await this.generateSVG(customerName);
+      const customerNameImageBuffer = this.generateSVG(customerName);
 
       const qrcodeImageBuffer = await this.generateQRCode(ticketId);
+
       const qrCodeOverlay = {
         input: qrcodeImageBuffer,
         top: 210, // X position for QR code
@@ -86,10 +81,10 @@ export class TicketService {
         top: 256,
         left: 637,
       };
-
+      const getoutputPath = this.getFilePath(outputPath);
       await ticket
         .composite([barcodeOverlay, qrCodeOverlay, svgOverlay])
-        .toFile(outputPath);
+        .toFile(getoutputPath);
     } catch (error) {
       console.log(error);
     }

@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
-import sharp from 'sharp';
+import * as sharp from 'sharp';
 import * as path from 'path';
-import bwipjs from 'bwip-js';
-import TextToSvg from 'text-to-svg';
+import * as bwipjs from 'bwip-js';
+import * as TextToSvg from 'text-to-svg';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -11,16 +11,17 @@ export class TicketService {
     @Inject(ConfigService) private readonly configService: ConfigService,
   ) {}
   getFilePath(fileName: string): string {
-    const basePath = this.configService.get('base_path');
+    const basePath = this.configService.get('base_url');
+    console.log(basePath, 'yesh');
     return path.join(basePath, fileName);
   }
   generateSVG(text: string) {
     const textToSVG = TextToSvg.loadSync();
     try {
       const svg = textToSVG.getSVG(text, {
-        fontSixe: 110,
+        fontSize: 110,
         anchor: 'top',
-        atrributes: { fill: 'black' },
+        atrributes: { fill: 'white', stroke: 'black' },
       });
       return Buffer.from(svg);
     } catch (err) {
@@ -32,6 +33,7 @@ export class TicketService {
       bcid: 'qrcode',
       text,
       scale: 5,
+      textcolor: 'ffffff',
     });
     return qrcodeBuffer;
   }
@@ -49,11 +51,15 @@ export class TicketService {
   }
 
   async createTicket(customerName, ticketId, outputPath) {
-    const ticketemplatePath = this.getFilePath(
-      './imageFile/Black and White Minimalist Ticket Music Party (1).png',
-    );
+    // const ticketemplatePath = this.getFilePath(
+    //   '/imageFile/Black and White Minimalist Ticket Music Party (1).png',
+    // );
 
-    const ticket = sharp(ticketemplatePath);
+    // console.log(ticketemplatePath);
+
+    const ticket = sharp(
+      './src/ticket/imageFile/Black and White Minimalist Ticket Music Party (1).png',
+    );
 
     try {
       const barcodeImageBuffer = await this.generateBarcode(ticketId);
@@ -77,8 +83,8 @@ export class TicketService {
       // Params to overlay SVG onto the template
       const svgOverlay = {
         input: customerNameImageBuffer,
-        top: 791,
-        left: 508,
+        top: 256,
+        left: 637,
       };
 
       await ticket

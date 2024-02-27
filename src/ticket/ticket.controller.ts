@@ -6,11 +6,11 @@ export class TicketController {
   constructor(private readonly ticketService: TicketService) {}
   @Get('/generate')
   generateTicket() {
-    const name = 'Likita-benjamin';
+    const name = 'Elisha';
     return this.ticketService.createTicket(
       name,
       'ticket-id-likita',
-      `./output/${name}-ticket.png`,
+      `./src/ticket/output/${name}-ticket.png`,
     );
   }
 }
